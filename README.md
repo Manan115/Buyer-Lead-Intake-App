@@ -35,8 +35,8 @@ npm run dev
 macOS/Linux (bash/zsh)
 ```bash
 # 1) Clone
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/Manan115/Buyer-Lead-Intake-App.git
+cd Buyer-Lead-Intake-App
 
 # 2) Install deps
 npm install
