@@ -176,9 +176,3 @@ Skipped (and why)
 
 ---
 
-## Interview Highlights
-- Same Zod schema on client + server (single source of truth).
-- Server pagination + `total` for accurate UX; SSR hydration + client debounce.
-- Ownership enforcement on server with simple, readable checks.
-- History writes on both create and update with field-level diffs.
-- CSV import transactional safety and row error reporting.
