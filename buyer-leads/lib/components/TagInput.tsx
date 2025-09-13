@@ -29,7 +29,7 @@ export default function TagInput({
   );
 
   return (
-  <div className="w-full p-2 border border-gray-300 rounded-md bg-transparent focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500">
+  <div className="w-full p-2 border border-gray-300 rounded-md bg-inherit focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500">
       <div className="flex flex-wrap gap-2 mb-2">
         {value.map((tag) => (
           <span
@@ -51,7 +51,7 @@ export default function TagInput({
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Type to add tag"
-        className="w-full p-2 rounded outline-none focus:outline-none bg-transparent"
+        className="w-full p-2 rounded outline-none focus:outline-none bg-inherit"
       />
       {input && filteredSuggestions.length > 0 && (
         <ul className="mt-1 rounded bg-white border border-gray-200">
