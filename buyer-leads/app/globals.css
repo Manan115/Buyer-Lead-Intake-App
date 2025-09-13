@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+/* ---- Minimalist, consistent theme + better hovers and inputs ---- */
+/* Subtle hover and readable inputs */
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-hover: #f2f6ff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --placeholder: #7a8598;
+  --border: #e5e7eb;
+  --primary: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --danger: #ef4444;
+  --focus: #94a3b8;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1020;
+    --surface: #0f172a;
+    --surface-hover: #172036;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --placeholder: #aab3c4;
+    --border: #1f2937;
+  }
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Layout */
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+/* Auth page background */
+.auth-wrap {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,0.12), transparent),
+              radial-gradient(1000px 500px at -10% 10%, rgba(16,185,129,0.12), transparent),
+              var(--bg);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 10px 14px;
+  border: 1px solid transparent;
+  background: var(--surface);
+  color: var(--text);
+  transition: background .16s, color .16s, border-color .16s, box-shadow .16s, transform .08s;
+  user-select: none;
+}
+.btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.btn:hover { background: var(--surface-hover); }
+.btn:active { transform: translateY(1px); }
+
+.btn-primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+.btn-primary:hover { background: var(--primary-600); border-color: var(--primary-600); }
+.btn-primary:active { background: var(--primary-700); border-color: var(--primary-700); }
+
+.btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border); }
+.btn-secondary:hover { background: var(--surface-hover); }
+
+.btn-danger { background: var(--danger); color: #fff; border-color: var(--danger); }
+.btn-danger:hover { background: #dc2626; border-color: #dc2626; }
+
+.btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
+.btn-outline:hover { background: var(--surface-hover); }
+
+.btn-link { background: transparent; color: var(--primary); border-color: transparent; padding-left: 0; }
+.btn-link:hover { color: var(--primary-600); background: transparent; }
+
+.icon { width: 16px; height: 16px; }
+
+/* Inputs and selects — larger text, better placeholders, consistent hover */
+.input, .select, .textarea,
+.card input[type="text"], .card input[type="email"], .card input[type="tel"], .card input[type="number"], .card input[type="search"], .card select, .card textarea {
+  width: 100%;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 15px;
+  line-height: 1.35;
+  transition: border-color .16s, box-shadow .16s, background .16s, color .16s;
+}
+.input::placeholder, .textarea::placeholder, .card input::placeholder, .card textarea::placeholder { color: var(--placeholder); }
+.input:hover, .select:hover, .textarea:hover, .card input:hover, .card select:hover, .card textarea:hover { background: var(--surface-hover); }
+.input:focus, .select:focus, .textarea:focus, .card input:focus, .card select:focus, .card textarea:focus { outline: none; border-color: var(--primary-600); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+
+/* Select caret consistency */
+.select, .card select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) calc(50% - 3px),
+    calc(100% - 12px) calc(50% - 3px),
+    calc(100% - 2.2em) 0.6em;
+  background-size: 6px 6px, 6px 6px, 1px 2.5em;
+  background-repeat: no-repeat;
+}
+
+/* Textarea */
+.textarea, .card textarea { min-height: 104px; resize: vertical; }
+
+/* Badges */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: 999px; padding: 4px 10px; font-size: 12px; font-weight: 600;
+  background: var(--badge); color: var(--badge-text);
+  border: 1px solid color-mix(in srgb, var(--badge-text) 15%, transparent);
+}
+
+/* Tables — consistent subtle hover */
+.table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+.table thead th {
+  text-align: left; font-weight: 700; color: var(--muted);
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 10px;
+}
+.table tbody tr { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+.table tbody tr:hover { background: var(--surface-hover); }
+.table tbody td { padding: 12px 10px; border-bottom: 1px solid var(--border); }
+.table tbody tr:last-child td { border-bottom: none; }
