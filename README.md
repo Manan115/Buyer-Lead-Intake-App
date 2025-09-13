@@ -166,13 +166,3 @@ Skipped (and why)
 - `tests/` – Vitest unit tests for validation
 
 ---
-
-## Running Notes (Local)
-1) Install deps: `npm install`
-2) Apply migrations: run the SQL files in `drizzle/` against `sqlite.db` (see above)
-3) Start dev server: `npm run dev`
-4) Login: go to `/login` and enter any username
-5) Try flows: create, list/filter/search, edit (test concurrency), import/export
-
----
-
