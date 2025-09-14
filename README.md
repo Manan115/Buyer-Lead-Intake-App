@@ -1,4 +1,4 @@
-## Buyer Lead Intake – Mini App (Interview Project)
+## Buyer Lead Intake – Mini App (Project)
 
 A small but production-minded app to capture, list, and manage buyer leads. Built with Next.js App Router, Drizzle ORM (SQLite), NextAuth (demo login), and Zod. It demonstrates validation on both client and server, URL-synced filters, SSR pagination, CSV import/export, ownership rules, and basic rate limiting.
 
@@ -15,8 +15,8 @@ Clone & Run Locally
 Windows PowerShell (recommended on Windows)
 ```powershell
 # 1) Clone
-git clone https://github.com/<your-username>/<your-repo>.git
-cd .\<your-repo>
+git clone https://github.com/Manan115/Buyer-Lead-Intake-App.git
+cd .\Buyer-Lead-Intake-App
 
 # 2) Install deps
 npm install
@@ -35,8 +35,8 @@ npm run dev
 macOS/Linux (bash/zsh)
 ```bash
 # 1) Clone
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/Manan115/Buyer-Lead-Intake-App.git
+cd Buyer-Lead-Intake-App
 
 # 2) Install deps
 npm install
@@ -166,19 +166,3 @@ Skipped (and why)
 - `tests/` – Vitest unit tests for validation
 
 ---
-
-## Running Notes (Local)
-1) Install deps: `npm install`
-2) Apply migrations: run the SQL files in `drizzle/` against `sqlite.db` (see above)
-3) Start dev server: `npm run dev`
-4) Login: go to `/login` and enter any username
-5) Try flows: create, list/filter/search, edit (test concurrency), import/export
-
----
-
-## Interview Highlights
-- Same Zod schema on client + server (single source of truth).
-- Server pagination + `total` for accurate UX; SSR hydration + client debounce.
-- Ownership enforcement on server with simple, readable checks.
-- History writes on both create and update with field-level diffs.
-- CSV import transactional safety and row error reporting.
