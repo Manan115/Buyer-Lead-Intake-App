@@ -1,4 +1,4 @@
-## Buyer Lead Intake – Mini App (Interview Project)
+## Buyer Lead Intake – Mini App (Project)
 
 A small but production-minded app to capture, list, and manage buyer leads. Built with Next.js App Router, Drizzle ORM (SQLite), NextAuth (demo login), and Zod. It demonstrates validation on both client and server, URL-synced filters, SSR pagination, CSV import/export, ownership rules, and basic rate limiting.
 
