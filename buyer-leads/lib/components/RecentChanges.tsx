@@ -67,8 +67,8 @@ export default function RecentChanges({ history }: { history: HistoryRow[] }) {
         const when = new Date(h.changedAt);
         return (
           <div className="card" key={h.id}>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-              <div style={{ fontWeight: 700 }}>Recent change</div>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6, alignItems: "center" }}>
+              <div style={{ fontWeight: 800, fontSize: 16 }}>Recent Change</div>
               <div style={{ color: "var(--muted)", fontSize: 12 }}>
                 {when.toLocaleString()}
                 {h.changedBy ? ` · by ${h.changedBy}` : ""}
@@ -78,14 +78,26 @@ export default function RecentChanges({ history }: { history: HistoryRow[] }) {
               <div style={{ color: "var(--muted)", fontSize: 14 }}>No field-level changes</div>
             ) : (
               <ul style={{ margin: 0, paddingLeft: 16 }}>
-                {entries.map(([field, change]) => (
-                  <li key={field} style={{ marginBottom: 4 }}>
-                    <strong>{labels[field] ?? field}:</strong>{" "}
-                    <span>{formatValue(field, (change as any).old)}</span>{" "}
-                    <span style={{ color: "var(--muted)" }}>→</span>{" "}
-                    <span>{formatValue(field, (change as any).new)}</span>
+                {entries.length > 8 ? (
+                  <li style={{ marginBottom: 4, fontWeight: 600 }}>
+                    Lead created
                   </li>
-                ))}
+                ) : (
+                  entries.map(([field, change]) => {
+                    // Skip noisy diffs where old and new are effectively the same stringified value
+                    const oldV = (change as any).old;
+                    const newV = (change as any).new;
+                    if (JSON.stringify(oldV) === JSON.stringify(newV)) return null;
+                    return (
+                      <li key={field} style={{ marginBottom: 6 }}>
+                        <strong>{labels[field] ?? field}:</strong>{" "}
+                        <span>{formatValue(field, oldV)}</span>{" "}
+                        <span style={{ color: "var(--muted)", fontWeight: 700 }}>→</span>{" "}
+                        <span style={{ fontWeight: 600 }}>{formatValue(field, newV)}</span>
+                      </li>
+                    );
+                  })
+                )}
               </ul>
             )}
           </div>

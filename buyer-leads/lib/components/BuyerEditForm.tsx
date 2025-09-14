@@ -119,9 +119,10 @@ export default function BuyerEditForm({ id }: { id: string }) {
       console.error("Update error:", err);
       if (err.name === "ZodError") {
         const fieldErrors: Record<string, string> = {};
-        err.errors.forEach((error: any) => {
-          const field = error.path[0];
-          fieldErrors[field] = error.message;
+        const issues = Array.isArray(err.issues) ? err.issues : Array.isArray(err.errors) ? err.errors : [];
+        issues.forEach((issue: any) => {
+          const field = issue.path?.[0] ?? "general";
+          fieldErrors[field] = issue.message ?? "Invalid value";
         });
         setErrors(fieldErrors);
         const firstField = Object.keys(fieldErrors)[0];

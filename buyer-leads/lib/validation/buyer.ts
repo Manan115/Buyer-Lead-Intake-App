@@ -6,7 +6,8 @@ export const buyerSchema = z.object({
   phone: z.string().regex(/^\d{10,15}$/),
   city: z.enum(["Chandigarh", "Mohali", "Zirakpur", "Panchkula", "Other"]),
   propertyType: z.enum(["Apartment", "Villa", "Plot", "Office", "Retail"]),
-  bhk: z.enum(["1", "2", "3", "4", "Studio"]).optional(),
+  // Allow empty string from UI selects; refine below enforces requirement when needed
+  bhk: z.enum(["1", "2", "3", "4", "Studio"]).optional().or(z.literal("")),
   purpose: z.enum(["Buy", "Rent"]),
   budgetMin: z.coerce.number().int().positive().optional(),
   budgetMax: z.coerce.number().int().positive().optional(),
